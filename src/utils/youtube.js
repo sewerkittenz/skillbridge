@@ -1,6 +1,11 @@
-const API_KEY = import.meta.env.VITE_YOUTUBE_KEY; // ✅ Correct
-
 export const searchVideos = async () => {
+  const API_KEY = import.meta.env.VITE_YOUTUBE_KEY;
+  
+  if (!API_KEY) {
+    throw new Error("API key is missing");
+  }
+
+
   const topics = [
     'classical physics',
     'programming',
