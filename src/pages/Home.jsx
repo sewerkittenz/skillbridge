@@ -1,29 +1,30 @@
 // src/pages/Home.jsx
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import VideoGrid from '../components/VideoGrid'
-import { searchVideos } from '../utils/youtube'
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import VideoGrid from '../components/VideoGrid';
+import { searchVideos } from '../utils/youtube';
+import { EnvTest } from '../utils/test-env';
 
 export default function Home() {
-  const [videos, setVideos] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [videos, setVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        setIsLoading(true)
-        const results = await searchVideos()
-        setVideos(results)
+        setIsLoading(true);
+        const results = await searchVideos();
+        setVideos(results);
       } catch (err) {
-        setError(err.message)
+        setError(err.message);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchVideos()
-  }, [])
+    fetchVideos();
+  }, []);
 
   return (
     <motion.div
@@ -32,6 +33,8 @@ export default function Home() {
       exit={{ opacity: 0 }}
       className="pt-20 px-4 md:px-8"
     >
+      <EnvTest />
+
       <motion.h1
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -87,5 +90,5 @@ export default function Home() {
         </motion.div>
       )}
     </motion.div>
-  )
+  );
 }

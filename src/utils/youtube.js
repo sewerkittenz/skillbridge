@@ -1,5 +1,5 @@
 export const searchVideos = async () => {
-  const API_KEY = import.meta.env.VITE_YOUTUBE_KEY;
+  const API_KEY = import.meta.env.VITE_YOUTUBE_KEY // ✅
   
   if (!API_KEY) {
     throw new Error("API key is missing");
